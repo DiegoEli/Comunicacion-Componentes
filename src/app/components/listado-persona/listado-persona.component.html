@@ -1,0 +1,95 @@
+<div class="container">
+
+    <app-count-personas
+        [todos]="obtenerTotalPersonas()"
+        [aprobados]="obtenerTotalAprobados()"
+        [reprobados]="obtenerTotalReprobados()"
+        (countRadioButtonChange)="personaCountRadioButtonChange($event)">
+    </app-count-personas>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Asignatura</th>
+                <th scope="col">Nota 1</th>
+                <th scope="col">Nota 2</th>
+                <th scope="col">Promedio</th>
+                <th scope="col">Estado</th>
+
+                <th>
+                    <button routerLink="/registrarPersona/" type="submit" class="btn btn-primary btn-sm">Agregar
+                        <i class="bi bi-person-plus-fill"></i>
+                    </button>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let persona of listPersona let i=index">
+
+                <tr *ngIf="radioButtonSeleccionado == 'Todos' || radioButtonSeleccionado == persona.estado ">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{persona.cedula}}</td>
+                    <td>{{persona.nombre}}</td>
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.asignatura}}</td>
+                    <td>{{persona.nota1}}</td>
+                    <td>{{persona.nota2}}</td>
+                    <td>{{persona.promedio}}</td>
+                    <td>{{persona.estado}}</td>
+                    <td>
+                        <span class="cursor text-success">
+                            <i routerLink="/editarPersona/" class="bi bi-pencil-square"></i>
+                        </span>
+                        <span class="cursor text-danger offset-2">
+                            <i class="bi bi-file-earmark-x-fill"></i>
+                        </span>
+                    </td>
+                </tr>
+
+            </ng-container>
+
+            <!-- <ng-container *ngFor="let persona of listPersona let i=index">
+
+                <tr *ngIf="radioButtonSeleccionado == 'Todos' || radioButtonSeleccionado == persona.estado">
+                <tr *ngIf="radioButtonSeleccionado === 'Todos' || (radioButtonSeleccionado === persona.estado && persona.estado) || (radioButtonSeleccionado === persona.estado && persona.estado)">
+                    
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{persona.cedula}}</td>
+                    <td>{{persona.nombre}}</td>
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.asignatura}}</td>
+                    <td>{{persona.nota1}}</td>
+                    <td>{{persona.nota2}}</td>
+                    <td>{{persona.promedio}}</td>
+                    <td>{{persona.estado  ? 'Aprobado' : 'Reprobado' }}</td>
+                    <td>
+
+                        <span class="cursor text-success">
+                            <i routerLink="/editarPersona/" class="bi bi-pencil-square"></i>
+                        </span>
+                        <span class="cursor text-danger offset-2">
+                            <i class="bi bi-file-earmark-x-fill"></i>
+                        </span>
+
+                    </td>
+
+                </tr>
+            </ng-container> -->
+
+        </tbody>
+    </table>
+
+    <div class="col-lg-3">
+        <div class="form-group mt-4">
+            <button routerLink="/promedioPersona/" type="submit" class="btn btn-success btn-lg">Promedio General
+                <i class="bi bi-journal-text"></i>
+            </button>
+        </div>
+    </div>
+
+</div>

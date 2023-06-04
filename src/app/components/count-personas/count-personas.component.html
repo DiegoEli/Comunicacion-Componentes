@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" [(ngModel)]="radioButtonSeleccionado" type="radio" name="estado"
+                    id="todos" value="Todos" (change)="radioChange()">
+                <label class="form-check-label" for="todos">Todos({{ todos }})</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" [(ngModel)]="radioButtonSeleccionado" type="radio" name="estado"
+                    id="reprobados" value="Aprobado" (change)="radioChange()">
+                <label class="form-check-label" for="aprobados">Aprobados({{ reprobados }})</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" [(ngModel)]="radioButtonSeleccionado" type="radio" name="estado"
+                    id="aprobados" value="Reprobado" (change)="radioChange()">
+                <label class="form-check-label" for="reprobados">Reprobados({{ aprobados }})</label>
+            </div>
+        </div>
+    </div>
+</div>
